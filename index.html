@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="music.css">
+    <script src="https://kit.fontawesome.com/3b44575c2b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="list">
+    <header>music's</header>
+    
+    <div class="aryan"> 
+    </div>
+</div>
+
+    <div class="leul " >
+<div class="musicplaer">
+<nav>
+<div class="circle">
+    <i class="fa-solid fa-angle-left"></i>
+</div>
+<a href="listmusic.html">
+<div class="circle">
+    <i class="fa-solid fa-bars"></i>
+</div>
+</a>
+</nav>
+<img src="download.jpg" class=" song-img">
+<h1>Libianca</h1>
+<p> People Ft </p>
+  <audio id="song" >
+     <source src="Libianca - People ft. Becky G(MP3_160K).mp3" type="audio/mpeg ">
+</audio>
+ <input type="range" value="0" id="vah">
+ <div class="contrlos">
+  <div>  <i class="fa-solid fa-backward"></i></div>
+  <div onclick="playpause()"> <i class="fa-solid fa-play"id="ctrlicon"></i></div>
+  <div>  <i class="fa-solid fa-forward"></i></div>
+   
+ </div>
+</div> 
+    </div>
+
+
+<script>
+
+let vah = document.getElementById("vah")
+let song = document.getElementById("song")
+let ctrlicon = document.getElementById("ctrlicon")
+
+song.onloadedmetadata = function(){
+    progress.max =song.duration;
+    progress.value =song.currentTime; 
+}
+function playpause(){
+if(ctrlicon.classList.contains ("fa-pause")){
+    song.pause();
+    ctrlicon.classList.remove("fa-pause");
+    ctrlicon.classList.add("fa-play");
+   
+}
+else{
+song.play();
+ctrlicon.classList.add("fa-pause");
+    ctrlicon.classList.remove("fa-play");
+
+}
+
+}
+if (song.play()){
+    setInterval(()=>{
+        vah.value = song.currentTime;
+    },5);
+}
+vah .onchange= function(){
+    song.play();
+    song.currentTime= vah.value;
+    ctrlicon.classList.add("fa-pause");
+    ctrlicon.classList.remove("fa-play");
+   
+
+}
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
